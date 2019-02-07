@@ -2,13 +2,28 @@ package br.com.news.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
 public class Author {
 	
+	@Id
 	private Long id;
+	
+	@Column
 	private String nome;
+	
+	@Column
 	private String email;
+	
+	@Column
 	private String bioSummary;
+	
+	@Column
 	private String bio;
+	
+	@OneToMany
 	private List<Post> posts;
 	
 	

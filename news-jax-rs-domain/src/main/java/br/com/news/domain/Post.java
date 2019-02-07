@@ -3,17 +3,42 @@ package br.com.news.domain;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.ManyToAny;
+
 
 public class Post {
 	
 	
+	@Id
 	private Long id;
+	
+	@Column
 	private String title;
+	
+	@Column
 	private String summary;
+	
+	@Column
 	private String content;
+	
+	@Column
 	private Author author;
+	
+	@Column
 	private Date date;
+	
+	@OneToMany
 	private List<Comment> comments;
+	
+	@ManyToMany(mappedBy="category")
 	private List<Category> category;
 	
 	public Long getId() {

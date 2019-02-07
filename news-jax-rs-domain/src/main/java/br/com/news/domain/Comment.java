@@ -1,11 +1,17 @@
 package br.com.news.domain;
 
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 public class Comment {
 	
 	private Long id;
 	private String author;
 	private String email;
 	private String content;
+	
+	@ManyToOne
+	private Post post;
 	
 	
 	public String getAuthor() {
@@ -31,6 +37,12 @@ public class Comment {
 	}
 	public void setId(Long id) {
 		this.id = id;
+	}
+	public Post getPost() {
+		return post;
+	}
+	public void setPost(Post post) {
+		this.post = post;
 	}
        
 	

@@ -2,11 +2,22 @@ package br.com.news.domain;
 
 import java.util.List;
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
 public class Category {
 	
+	@Id
 	private String id;
+	
+	@Column
 	private String nome;
+	
+	@Column
 	private String summary;
+	
+	@ManyToMany(mappedBy="posts")
 	private List<Post> posts;
 	
 	
