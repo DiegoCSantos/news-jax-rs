@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"> 
+ 
+ 
+	<modelVersion>4.0.0</modelVersion> 
+ 
+ 
+	<artifactId>news-jax-rs</artifactId> 
+	<groupId>br.com.newsjaxrs</groupId> 
+	<version>1.0.0-SNAPSHOT</version> 
+	<packaging>pom</packaging> 
+	<modules>   
+		<module>news-jax-rs-parent</module> 
+		<module>news-jax-rs-domain</module> 
+		<module>news-jax-rs-data</module> 
+		<module>news-jax-rs-business</module> 
+		<module>news-jax-rs-rest</module> 
+		<module>news-jax-rs-client</module> 
+	</modules> 
+ 
+ 
+ 
+</project> 
