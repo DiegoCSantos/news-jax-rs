@@ -4,16 +4,14 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.UniqueConstraint;
-
-import org.hibernate.annotations.ManyToAny;
 
 
+@Entity
 public class Post {
 	
 	
@@ -29,7 +27,7 @@ public class Post {
 	@Column
 	private String content;
 	
-	@Column
+	@ManyToOne
 	private Author author;
 	
 	@Column
@@ -38,7 +36,7 @@ public class Post {
 	@OneToMany
 	private List<Comment> comments;
 	
-	@ManyToMany(mappedBy="category")
+	@ManyToMany
 	private List<Category> category;
 	
 	public Long getId() {

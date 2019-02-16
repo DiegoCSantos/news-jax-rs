@@ -3,9 +3,11 @@ package br.com.news.domain;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+@Entity
 public class Category {
 	
 	@Id
@@ -17,7 +19,7 @@ public class Category {
 	@Column
 	private String summary;
 	
-	@ManyToMany(mappedBy="posts")
+	@ManyToMany(mappedBy="category")
 	private List<Post> posts;
 	
 	

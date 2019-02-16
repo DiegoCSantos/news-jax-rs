@@ -1,13 +1,23 @@
 package br.com.news.domain;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
+@Entity
 public class Comment {
 	
+	@Id
 	private Long id;
+	
+	@Column
 	private String author;
+	
+	@Column
 	private String email;
+	
+	@Column
 	private String content;
 	
 	@ManyToOne
