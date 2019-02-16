@@ -17,5 +17,16 @@
 	<packaging>jar</packaging> 
  
  
+ 	 <dependencies>
+ 	    <dependency>
+ 	    	<artifactId>news-jax-rs-domain</artifactId> 
+    		<groupId>br.com.newsjaxrs</groupId> 
+ 	    </dependency>
+ 	    <dependency>
+ 	    	<artifactId>news-jax-rs-data</artifactId> 
+    		<groupId>br.com.newsjaxrs</groupId> 
+ 	    </dependency>
+ 	 </dependencies>
+ 
  
 </project> 
