@@ -2,24 +2,26 @@ package br.com.news.business;
 
 import java.util.List;
 
-import br.com.news.data.ServicoCommentDAO;
+import br.com.news.data.CommentServiceDAO;
 import br.com.news.domain.Comment;
 
-public class ServicoComment {
+public class CommentService {
 	
-	private ServicoCommentDAO dao;
+	private CommentServiceDAO dao;
 
-	public ServicoComment() {}
-
-	public ServicoCommentDAO getDao() {
-		return dao;
+	public CommentService() {
+		this.dao = new CommentServiceDAO();
 	}
 
-	public void setDao(ServicoCommentDAO dao) {
+    
+	
+	
+	public CommentService(CommentServiceDAO dao) {
+		super();
 		this.dao = dao;
 	}
-	
-	
+
+
 	public Comment insert(Comment comment) {
 		
 		return dao.insert(comment);
@@ -32,16 +34,16 @@ public class ServicoComment {
 	
 	public Comment select(Long id) {
 		
-		return dao.select(Comment.class,id);
+		return dao.select(id);
 	}
 	
 	public void delete(Long id) {
-		dao.delete(Comment.class,id);
+		dao.delete(id);
 	}
 	
 	public List<Comment> list() {
 		
-		return dao.list(Comment.class);
+		return dao.list();
 	}
 
 	

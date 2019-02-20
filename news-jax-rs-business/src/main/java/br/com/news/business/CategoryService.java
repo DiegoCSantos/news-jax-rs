@@ -2,16 +2,19 @@ package br.com.news.business;
 
 import java.util.List;
 
-import br.com.news.data.ServicoCategoryDAO;
+import br.com.news.data.CategoryServiceDAO;
 import br.com.news.domain.Category;
 
-public class ServicoCategory {
+public class CategoryService {
 	
-	private ServicoCategoryDAO dao;
+	private CategoryServiceDAO dao;
 
-	public ServicoCategory() {}
+	public CategoryService() {
+		
+		this.dao = new CategoryServiceDAO();
+	}
 	
-	public ServicoCategory(ServicoCategoryDAO dao) {
+	public CategoryService(CategoryServiceDAO dao) {
 		super();
 		this.dao = dao;
 	}
@@ -30,16 +33,16 @@ public class ServicoCategory {
 	
 	public Category select(Long id) {
 		
-		return dao.select(Category.class,id);
+		return dao.select(id);
 	}
 	
 	public void delete(Long id) {
-		dao.delete(Category.class, id);
+		dao.delete(id);
 	}
 	
 	
 	public List<Category> list(){
-		return dao.list(Category.class);
+		return dao.list();
 	}
 	
 

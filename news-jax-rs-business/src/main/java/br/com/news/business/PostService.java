@@ -2,16 +2,19 @@ package br.com.news.business;
 
 import java.util.List;
 
-import br.com.news.data.ServicoPostDAO;
+import br.com.news.data.PostServiceDAO;
 import br.com.news.domain.Post;
 
-public class ServicoPost {
+public class PostService {
 	
-	private ServicoPostDAO dao;
+	private PostServiceDAO dao;
+	
 
-	public ServicoPost() {}
+	public PostService() {
+		this.dao = new PostServiceDAO();
+	}
 
-	public ServicoPost(ServicoPostDAO dao) {
+	public PostService(PostServiceDAO dao) {
 		super();
 		this.dao = dao;
 	}
@@ -30,17 +33,17 @@ public class ServicoPost {
 	
 	public Post select(Long id) {
 		
-		return dao.select(Post.class, id);
+		return dao.select(id);
 	}
 	
 	public void delete(Long id) {
 		
-		dao.delete(Post.class, id);
+		dao.delete(id);
 	}
 	
 	public List<Post> list() {
 		
-		return dao.list(Post.class);
+		return dao.list();
 	}
 	
 

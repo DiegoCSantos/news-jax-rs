@@ -10,6 +10,9 @@ public class AbstraticDAO <T> {
 	
 	private EntityManagerFactory factory;
 	
+	AbstraticDAO(){
+		this.factory = new EntityManagerFactory();
+	}
 	
 	public T insert(T entity) {
 		
@@ -51,7 +54,7 @@ public class AbstraticDAO <T> {
 	public List<T> list(Class<T> clazz){
 		
 		EntityManager em = factory.getEntityManager();
-		return em.createQuery("select * from "+clazz.getName() , clazz).getResultList();
+		return em.createQuery("select e from "+clazz.getName()+" e " , clazz).getResultList();
 	}
 	
 	

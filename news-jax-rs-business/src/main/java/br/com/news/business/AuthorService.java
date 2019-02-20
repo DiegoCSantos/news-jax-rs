@@ -2,16 +2,18 @@ package br.com.news.business;
 
 import java.util.List;
 
-import br.com.news.data.ServicoAuthorDAO;
+import br.com.news.data.AuthorServiceDAO;
 import br.com.news.domain.Author;
 
-public class ServicoAuthor {
+public class AuthorService {
 	
-	private ServicoAuthorDAO dao;
+	private AuthorServiceDAO dao;
 
-	public ServicoAuthor() {}
+	public AuthorService() {
+		this.dao =new AuthorServiceDAO();
+	}
 
-	public ServicoAuthor(ServicoAuthorDAO dao) {
+	public AuthorService(AuthorServiceDAO dao) {
 		super();
 		this.dao = dao;
 	}
@@ -31,16 +33,16 @@ public class ServicoAuthor {
 	
 	public Author select(Long id) {
 		
-		return dao.select(Author.class, id);
+		return dao.select(id);
 	}
 	
 	public void delete(Long id) {
-		 dao.delete(Author.class, id);
+		 dao.delete(id);
 	}
 	
 	
 	public List<Author> list() {
-		 return dao.list(Author.class);
+		 return dao.list();
 	}
 
 }
