@@ -26,20 +26,54 @@
  	    	<artifactId>news-jax-rs-domain</artifactId> 
     		<groupId>br.com.newsjaxrs</groupId> 
  	    </dependency>
+ 	      <dependency>
+ 	    	<artifactId>news-jax-rs-business</artifactId> 
+    		<groupId>br.com.newsjaxrs</groupId> 
+ 	    </dependency>
  	    <dependency>
-	    	<groupId>org.hibernate.javax.persistence</groupId>
-	    	<artifactId>hibernate-jpa-2.1-api</artifactId>
+    		<groupId>javax.ws.rs</groupId>
+   			<artifactId>javax.ws.rs-api</artifactId>
+		</dependency>
+ 	    <dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-server</artifactId>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.glassfish.jersey.containers</groupId>
+		    <artifactId>jersey-container-servlet</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.core</groupId>
+		    <artifactId>jersey-client</artifactId>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.glassfish.jersey.inject</groupId>
+		    <artifactId>jersey-hk2</artifactId>
+		</dependency>
+		<dependency>
+		    <groupId>com.h2database</groupId>
+		    <artifactId>h2</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		<dependency>
+		    <groupId>javax</groupId>
+		    <artifactId>javaee-api</artifactId>
+		    <scope>provided</scope>
 		</dependency>
  	</dependencies>
  
  
 	  <build>
+	   <finalName>news-api</finalName>
 		<plugins>
 		  <plugin>
 			<groupId>org.apache.maven.plugins</groupId>
 			<artifactId>maven-war-plugin</artifactId>
 			<configuration>
-			  <failOnMissingWebXml>false</failOnMissingWebXml>
+			  <failOnMissingWebXml>true</failOnMissingWebXml>
 			</configuration>
 		  </plugin>
 		</plugins>
