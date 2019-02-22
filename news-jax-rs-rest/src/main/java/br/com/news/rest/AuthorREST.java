@@ -17,7 +17,7 @@ import javax.ws.rs.core.Response;
 import br.com.news.business.AuthorService;
 import br.com.news.domain.Author;
 
-@Path("/autor")
+@Path("/author")
 public class AuthorREST{
 	
 

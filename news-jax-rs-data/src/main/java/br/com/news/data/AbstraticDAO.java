@@ -29,7 +29,7 @@ public class AbstraticDAO <T> {
 		
 		EntityManager em = factory.getEntityManager();
 		em.getTransaction().begin();
-		em.persist(entity);
+		em.merge(entity);
 		em.flush();
 		em.getTransaction().commit();
 		

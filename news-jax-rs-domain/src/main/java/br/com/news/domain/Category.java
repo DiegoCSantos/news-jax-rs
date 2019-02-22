@@ -13,43 +13,50 @@ public class Category {
 	
 	@Id
 	@GeneratedValue
-	private String id;
+	private Long id;
 	
 	@Column
-	private String nome;
+	private String name;
 	
 	@Column
 	private String summary;
 	
 	@ManyToMany(mappedBy="category")
 	private List<Post> posts;
-	
-	
-	
-	public String getId() {
+
+	public Long getId() {
 		return id;
 	}
-	public void setId(String id) {
+
+	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getNome() {
-		return nome;
+
+	public String getName() {
+		return name;
 	}
-	public void setNome(String nome) {
-		this.nome = nome;
+
+	public void setName(String name) {
+		this.name = name;
 	}
+
 	public String getSummary() {
 		return summary;
 	}
+
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
+
 	public List<Post> getPosts() {
 		return posts;
 	}
+
 	public void setPosts(List<Post> posts) {
 		this.posts = posts;
 	}
+	
+	
 	
 	
 }
