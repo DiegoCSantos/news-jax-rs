@@ -16,6 +16,7 @@
 		<module>news-jax-rs-business</module> 
 		<module>news-jax-rs-rest</module> 
 		<module>news-jax-rs-client</module> 
+		<module>news-jax-rs-exec</module> 
 	</modules> 
  
  

@@ -5,11 +5,14 @@
 	<modelVersion>4.0.0</modelVersion> 
  
 
- 
+ 	<parent> 
+    	<artifactId>news-jax-rs-parent</artifactId> 
+    	<groupId>br.com.newsjaxrs</groupId> 
+    	<version>1.0.0-SNAPSHOT</version> 
+   	    <relativePath>../news-jax-rs-parent</relativePath> 
+	</parent> 
  
 	<artifactId>news-jax-rs-client</artifactId> 
-	<groupId>br.com.newjaxrs</groupId> 
-	<version>1.0.0-SNAPSHOT</version> 
 	<packaging>jar</packaging> 
  
  
