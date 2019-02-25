@@ -1,0 +1,1 @@
+java -jar news-api-exec-jar-with-dependencies.jar
