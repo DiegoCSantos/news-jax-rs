@@ -21,12 +21,12 @@
 
 **/target
 */RemoteSystemsTempFiles
-*/.metadata
-*/.settings
-*/.project
-*/.classpath
+**/.metadata
+**/.settings
+**/.project
+**/.classpath
 */Servers
-*/bin
+**/bin
 */tomcat*
 
 /target
