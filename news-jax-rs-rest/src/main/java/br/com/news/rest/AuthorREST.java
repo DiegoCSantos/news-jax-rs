@@ -29,15 +29,15 @@ public class AuthorREST{
 		super();
 		this.service = new AuthorService();
  }
-
-@POST
+ 
+ @POST
  @Consumes(MediaType.APPLICATION_JSON)
  @Produces(MediaType.APPLICATION_JSON)
  public Response insert(Author author) {
 	 
 	 return Response.ok().entity(service.insert(author)).build();
  }
-	
+ 
  @PUT
  @Consumes(MediaType.APPLICATION_JSON)
  @Produces(MediaType.APPLICATION_JSON)
@@ -45,7 +45,6 @@ public class AuthorREST{
 	 
 		return Response.ok().entity(service.update(author)).build();
  }
-
  @Path("/{id}")
  @DELETE
  @Consumes(MediaType.APPLICATION_JSON)
@@ -56,7 +55,6 @@ public class AuthorREST{
 	 return Response.ok().build();
  }
  
- 
  @Path("/{id}")
  @GET
  @Consumes(MediaType.APPLICATION_JSON)
@@ -66,7 +64,6 @@ public class AuthorREST{
 	 
 	 return Response.ok().entity(service.select(id)).build();
  }
- 
  
  
  @GET

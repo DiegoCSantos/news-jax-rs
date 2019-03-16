@@ -22,7 +22,7 @@ public class Category {
 	private String summary;
 	
 	@ManyToMany(mappedBy="category")
-	private List<Post> posts;
+	private List<Post> post;
 
 	public Long getId() {
 		return id;
@@ -48,12 +48,12 @@ public class Category {
 		this.summary = summary;
 	}
 
-	public List<Post> getPosts() {
-		return posts;
+	public List<Post> getPost() {
+		return post;
 	}
 
-	public void setPosts(List<Post> posts) {
-		this.posts = posts;
+	public void setPost(List<Post> post) {
+		this.post = post;
 	}
 	
 	

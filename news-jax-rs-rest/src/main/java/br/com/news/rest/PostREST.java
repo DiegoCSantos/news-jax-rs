@@ -11,6 +11,7 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.GenericEntity;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -75,6 +76,29 @@ public class PostREST {
  public Response list() {
 	 
 	 GenericEntity<List<Post>> list = new GenericEntity<List<Post>>(service.list()) {};
+	 return Response.ok().entity(list).build();
+ }
+ 
+ @Path("/author/{idAuthor}")
+ @GET
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public Response listByAuthor(@PathParam("idAuthor")Long idAuthor, @QueryParam("pageSize") int pageSize,
+		 @QueryParam("pageNum") int pageNum) {
+	 
+	 GenericEntity<List<Post>> list = new GenericEntity<List<Post>>(service.listByAuthor(idAuthor, pageSize, pageNum)) {};
+	 return Response.ok().entity(list).build();
+ }
+ 
+ 
+ @Path("/category/{idCategory}")
+ @GET
+ @Consumes(MediaType.APPLICATION_JSON)
+ @Produces(MediaType.APPLICATION_JSON)
+ public Response listByCategory(@PathParam("idCategory")Long idCategory, @QueryParam("pageSize") int pageSize,
+		 @QueryParam("pageNum") int pageNum) {
+	 
+	 GenericEntity<List<Post>> list = new GenericEntity<List<Post>>(service.listByCategory(idCategory, pageSize, pageNum)) {};
 	 return Response.ok().entity(list).build();
  }
  

@@ -1,10 +1,11 @@
 package br.com.news.data;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
-
-import org.hibernate.Session;
+import javax.persistence.Query;
+import javax.persistence.TypedQuery;
 
 public class AbstraticDAO <T> {
 	
@@ -51,10 +52,39 @@ public class AbstraticDAO <T> {
 		em.getTransaction().commit();
 	}
 	
-	public List<T> list(Class<T> clazz){
+	protected List<T> list(Class<T> clazz){
 		
 		EntityManager em = factory.getEntityManager();
 		return em.createQuery("select e from "+clazz.getName()+" e " , clazz).getResultList();
+	}
+	
+	protected List<T> listJPql(String  query, Class<T> clazz){
+		return listJPQL(query, null, clazz,null, null);
+	}
+	
+	
+	protected List<T> listJPQL(String  query, Map<String,?> params, Class<T> clazz){
+		return listJPQL(query, params, clazz,null, null);
+	}
+	
+	
+	protected List<T> listJPQL(String  query, Map<String,?> params, Class<T> clazz,Integer  pageSize, Integer pageNum){
+		EntityManager em = factory.getEntityManager();
+		
+		  Query q = em.createQuery(query, clazz);
+		  
+		  if(params!=null)
+			  params.keySet().forEach(k-> {
+				  q.setParameter(k, params.get(k));
+			  });
+		  
+		  if(pageSize !=null)
+			  q.setMaxResults(pageSize);
+		  
+		  if(pageNum !=null && pageSize != null)
+			  q.setFirstResult(pageNum * pageSize);
+		  
+		return  q.getResultList();
 	}
 	
 	

@@ -46,6 +46,17 @@ public class PostService {
 		return dao.list();
 	}
 	
+	public List<Post> listByAuthor(Long idAuthor, int pageSize, int pageNum) {
+		
+		return dao.listByAuthor(idAuthor, pageSize, pageNum);
+	}
+	
+	public List<Post> listByCategory(Long idCategory, int pageSize, int pageNum) {
+		
+		return dao.listByCategory(idCategory, pageSize, pageNum);
+	}
+	
+	
 
 
 }
