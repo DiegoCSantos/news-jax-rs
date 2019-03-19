@@ -4,21 +4,24 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="FILE")
 public class File {
 	
 	@GeneratedValue
+	@Column(name="ID")
 	@Id
 	private Long id;
 	
-	@Column(columnDefinition="VARCHAR(MAX)")
+	@Column(name="CONTENT", columnDefinition="VARCHAR(MAX)")
 	private String content;
 	
-	@Column
+	@Column(name="NAME")
 	private String name;
 	
-	@Column
+	@Column(name="TYPE")
 	private String type;
 	
 	

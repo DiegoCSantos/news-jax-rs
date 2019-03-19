@@ -5,40 +5,58 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 
 @Entity
+@Table(name="POST")
 public class Post {
 	
 	
 	@Id
+	@Column(name="ID")
 	@GeneratedValue
 	private Long id;
 	
-	@Column
+	@Column(name="TITLE")
 	private String title;
 	
-	@Column
+	@Column(name="SUMMARY")
 	private String summary;
 	
-	@Column
+	@Column(name="CONTENT", columnDefinition="VARCHAR(MAX)")
+	
 	private String content;
 	
-	@ManyToOne
+	@JsonBackReference
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="AUTHOR_ID")
 	private Author author;
 	
-	@Column
+	@Column(name="DATE")
 	private Date date;
 	
-	@OneToMany
-	private List<Comment> comments;
+	@OneToMany(mappedBy="post", fetch = FetchType.LAZY)
+	private List<Comment> comment;
 	
-	@ManyToMany
+	@JsonBackReference
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name="POST_CATEGORY", joinColumns= {@JoinColumn(name="POST_ID")}, inverseJoinColumns= {@JoinColumn(name="CATEGORY_ID")})
 	private List<Category> category;
 	
 	public Long getId() {
@@ -77,11 +95,11 @@ public class Post {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	public List<Comment> getComments() {
-		return comments;
+	public List<Comment> getComment() {
+		return comment;
 	}
-	public void setComments(List<Comment> comments) {
-		this.comments = comments;
+	public void setComment(List<Comment> comments) {
+		this.comment = comments;
 	}
 	public List<Category> getCategory() {
 		return category;

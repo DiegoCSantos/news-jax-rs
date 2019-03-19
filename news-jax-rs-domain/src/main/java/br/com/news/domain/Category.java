@@ -4,24 +4,36 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
+@Table(name="CATEGORY")
 public class Category {
 	
 	@Id
+	@Column(name="ID")
 	@GeneratedValue
 	private Long id;
 	
-	@Column
+	@Column(name="NAME")
 	private String name;
 	
-	@Column
+	@Column(name="SUMMARY")
 	private String summary;
 	
-	@ManyToMany(mappedBy="category")
+	@JsonBackReference
+	@ManyToMany(mappedBy="category", fetch=FetchType.LAZY)
 	private List<Post> post;
 
 	public Long getId() {

@@ -2,27 +2,38 @@ package br.com.news.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 @Entity
+@Table(name="COMMENT")
 public class Comment {
 	
 	@Id
+	@Column(name="ID")
 	@GeneratedValue
 	private Long id;
 	
-	@Column
+	@Column(name="AUTHOR")
 	private String author;
 	
-	@Column
+	@Column(name="EMAIL")
 	private String email;
 	
-	@Column
+	@Column(name="CONTENT")
 	private String content;
 	
-	@ManyToOne
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="POST_ID")
 	private Post post;
 	
 	
