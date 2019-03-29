@@ -43,8 +43,7 @@ public class Post {
 	
 	private String content;
 	
-	@JsonBackReference
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne()
 	@JoinColumn(name="AUTHOR_ID")
 	private Author author;
 	
@@ -54,7 +53,6 @@ public class Post {
 	@OneToMany(mappedBy="post", fetch = FetchType.LAZY)
 	private List<Comment> comment;
 	
-	@JsonBackReference
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name="POST_CATEGORY", joinColumns= {@JoinColumn(name="POST_ID")}, inverseJoinColumns= {@JoinColumn(name="CATEGORY_ID")})
 	private List<Category> category;

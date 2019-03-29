@@ -14,6 +14,8 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="COMMENT")
 public class Comment {
@@ -32,6 +34,7 @@ public class Comment {
 	@Column(name="CONTENT")
 	private String content;
 	
+	@JsonBackReference
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="POST_ID")
 	private Post post;

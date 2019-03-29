@@ -15,6 +15,8 @@ import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.LazyCollection;
 import org.hibernate.annotations.LazyCollectionOption;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 @Table(name="AUTHOR")
 public class Author {
@@ -36,8 +38,7 @@ public class Author {
 	@Column(name="BIO", columnDefinition="VARCHAR(MAX)")
 	private String bio;
 	
-	@Fetch(FetchMode.SELECT)
-	@LazyCollection(LazyCollectionOption.TRUE)
+	@JsonBackReference
 	@OneToMany(mappedBy="author", fetch = FetchType.LAZY)
 	private List<Post> post;
 
