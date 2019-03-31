@@ -118,6 +118,14 @@ public class Error {
 		this.message="NOT FOUND";
 		return this;
 	}
+	
+	public Error addErrorNotAuthorized(String message) {
+		this.addErrorMessage(message);
+		
+		this.code=401;
+		this.message="NOT AUTHORIZED";
+		return this;
+	}
 	 
 	
 	public boolean hasErrors() {

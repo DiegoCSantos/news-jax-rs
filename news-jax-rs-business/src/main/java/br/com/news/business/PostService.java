@@ -20,6 +20,7 @@ public class PostService {
 	public PostService() {
 		this.dao = new PostServiceDAO();
 		this.authorDao = new AuthorServiceDAO();
+		this.categoryDao = new CategoryServiceDAO();
 		this.validatorsUtils=new ValidatorsUtils();
 	}
 
@@ -27,6 +28,7 @@ public class PostService {
 		super();
 		this.dao = dao;
 		this.authorDao = new AuthorServiceDAO();
+		this.categoryDao = new CategoryServiceDAO();
 		this.validatorsUtils=new ValidatorsUtils();
 	}
 	
@@ -60,11 +62,35 @@ public class PostService {
 	}
 	
 	public List<Post> listByAuthor(Long idAuthor, int pageSize, int pageNum) {
+		Error error  = new Error();
+		
+		if(validatorsUtils.isNullOrEmpty(idAuthor)) {
+			error.addErrorBadRequest(" Id Author is required");
+		}else if(validatorsUtils.isNullOrEmpty(authorDao.select(idAuthor))){
+			error.addErrorBadRequest(" Id Author not found");
+		}
+		
+		if(error.hasErrors()) {
+			throw new NewsException(error);
+		}		
 		
 		return dao.listByAuthor(idAuthor, pageSize, pageNum);
 	}
 	
 	public List<Post> listByCategory(Long idCategory, int pageSize, int pageNum) {
+		Error error  = new Error();
+		
+		if(validatorsUtils.isNullOrEmpty(idCategory)) {
+			error.addErrorBadRequest(" Id Category is required");
+			
+		}else if(validatorsUtils.isNullOrEmpty(categoryDao.select(idCategory))){
+			error.addErrorBadRequest(" Id Category not found");
+		}
+		
+		if(error.hasErrors()) {
+			throw new NewsException(error);
+		}		
+		
 		
 		return dao.listByCategory(idCategory, pageSize, pageNum);
 	}
